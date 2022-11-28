@@ -1,0 +1,17 @@
+//////////////////////////////add oeacle and web service///////////////////////
+
+ var webServiceConfig = hostContext.Configuration.GetSection("WebService").Get<WebServiceConfig>();
+        var oracleConfig = hostContext.Configuration.GetSection("Oracle").Get<OracleConfig>();
+        services.AddOracle(oracleConfig);
+        services.AddTransient<ICommonService, CommonService>();
+        services.AddTransient<VavoomServicee.VavoomServiceSoap>(s => new VavoomServicee.VavoomServiceSoapClient(VavoomServicee.VavoomServiceSoapClient.EndpointConfiguration.VavoomServiceSoap, webServiceConfig.VavoomServiceUrl));
+        services.AddHostedService<Worker>();
+
+///////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////add connectio string//////////////////////////////
+    in porgram.cs--> builder.Configuration.GetConnectionString("Connection");
+
+in service -->private IConfiguration Configuration;
+            string cs = Configuration.GetConnectionString("Connection");
+////////////////////////////////////////////////////////////////////////////
