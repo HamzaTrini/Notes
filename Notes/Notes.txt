@@ -15,5 +15,37 @@
 in service -->private IConfiguration Configuration;
             string cs = Configuration.GetConnectionString("Connection");
 ////////////////////////////////////////////////////////////////////////////
+*******add service connection**************
+1- add connection service in visual studio
+2-add class in folder the configration
+Ex:
+ public class WebServiceConfig
+    {
+        public string VavoomServiceUrl { get; set; } = "";
+    }
 
+3- add value for vavoomService in appsetting.json 
+Ex:
+"WebService": {
+    "VavoomServiceUrl": "http://zinc-bcm/VavoomService/VavoomService.asmx"
+  }
+4- add configure in porgram.cs
+Ex: .var webServiceConfig = hostContext.Configuration.GetSection("WebService").Get<WebServiceConfig>(); 
+
+.services.AddTransient<VavoomServicee.VavoomServiceSoap>(s => new VavoomServicee.VavoomServiceSoapClient
+(VavoomServicee.VavoomServiceSoapClient.EndpointConfiguration.VavoomServiceSoap, webServiceConfig.VavoomServiceUrl));
+
+5-inject this service in controller or anther
+
+Ex:
+private readonly VavoomServiceSoap _vavoomService;
+
+and add into constrctor
+
+6-use the service
+ Ex:
+  await _vavoomService.DeActivateAccountAsync(new DeActivateAccountRequest() { Body = new DeActivateAccountRequestBody()
+ { MSISDN962 = adjustment.msisdn962 } });
+
+*******************************************************************
 
