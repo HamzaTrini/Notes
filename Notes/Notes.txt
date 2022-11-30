@@ -1,4 +1,4 @@
-//////////////////////////////add oeacle and web service///////////////////////
+//////////////////////////////add oracle and web service in porodram.cs///////////////////////
 
  var webServiceConfig = hostContext.Configuration.GetSection("WebService").Get<WebServiceConfig>();
         var oracleConfig = hostContext.Configuration.GetSection("Oracle").Get<OracleConfig>();
@@ -10,9 +10,11 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////add connectio string//////////////////////////////
-    in porgram.cs--> builder.Configuration.GetConnectionString("Connection");
+1- appsetting.json
 
-in service -->private IConfiguration Configuration;
+2-in porgram.cs--> builder.Configuration.GetConnectionString("Connection");
+
+3-in service -->private IConfiguration Configuration;
             string cs = Configuration.GetConnectionString("Connection");
 ////////////////////////////////////////////////////////////////////////////
 *******add service connection**************
@@ -48,7 +50,7 @@ and add into constrctor
  { MSISDN962 = adjustment.msisdn962 } });
 
 *******************************************************************
-
+End
 *******************************************************
 Proprty for XML--> DALGeneratorCore
 *******************************************************
