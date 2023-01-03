@@ -1,4 +1,4 @@
-//////////////////////////////add oracle and web service in porodram.cs///////////////////////
+//////////////////////////////add oracle and web service in porodram.cs in worker///////////////////////
 
  var webServiceConfig = hostContext.Configuration.GetSection("WebService").Get<WebServiceConfig>();
         var oracleConfig = hostContext.Configuration.GetSection("Oracle").Get<OracleConfig>();
@@ -14,7 +14,7 @@
 
 2-in porgram.cs--> builder.Configuration.GetConnectionString("Connection");
 
-3-in service -->private IConfiguration Configuration;
+3-in service class -->private IConfiguration Configuration;
             string cs = Configuration.GetConnectionString("Connection");
 ////////////////////////////////////////////////////////////////////////////
 *******add service connection**************
